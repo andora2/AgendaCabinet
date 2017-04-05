@@ -16,17 +16,17 @@ public class WorkType implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="\"defaultPrice\"")
+	@Column(name="defaultPrice")
 	private Double defaultPrice;
 
-	@Column(name="\"details\"")
+	@Column(name="details")
 	private String details;
 
 	@Id
-	@Column(name="\"idWorkType\"")
+	@Column(name="idWorkType")
 	private Long idWorkType;
 
-	@Column(name="\"name\"")
+	@Column(name="name")
 	private String name;
 
 	public WorkType() {

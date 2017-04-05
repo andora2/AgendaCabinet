@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -28,6 +29,10 @@ public class CustomerWS {
 
 	@EJB
 	DummyData dummyData;
+
+	@Inject
+    private EntityManager entityManager;
+
 	
 	@GET
 	@Path( "/" )
@@ -38,9 +43,9 @@ public class CustomerWS {
 	
 	@SuppressWarnings("unchecked")
 	private List<Customer> getAllCustommers() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory( "AgendaCabinet" );
-		EntityManager em = emf.createEntityManager();
-		return em.createNamedQuery("Customer.findAll").getResultList();
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory( "AgendaCabinet" );
+		//EntityManager em = emf.createEntityManager();
+		return entityManager.createNamedQuery("Customer.findAll").getResultList();
 		//return this.dummyData.getCustomers();
 	}
 

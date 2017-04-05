@@ -14,41 +14,43 @@ import java.util.List;
 @Table(name=Customer.CUSTOMER)
 @NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c")
 public class Customer implements Serializable {
-	static final String CUSTOMER = "acprod.Customer";
+	static final String AGCAB_PROD = "AGCAB_PROD";
+
+	static final String CUSTOMER = "Customer";
 
 	private static final long serialVersionUID = 1L;
 
 	private String cnp;
 
-	@Column(name="\"createTime\"")
+	@Column(name="createTime")
 	private Timestamp createTime;
 
-	@Column(name="\"familyName\"")
+	@Column(name="familyName")
 	private String familyName;
 
 	@Id
-	@Column(name="\"idCustomer\"")
+	@Column(name="idCustomer")
 	private Long idCustomer;
 
-	@Column(name="\"mail\"")
+	@Column(name="mail")
 	private String mail;
 
-	@Column(name="\"mobil\"")
+	@Column(name="mobil")
 	private String mobil;
 
-	@Column(name="\"name\"")
+	@Column(name="name")
 	private String name;
 
-	@Column(name="\"tel\"")
+	@Column(name="tel")
 	private String tel;
 
 	//bi-directional many-to-one association to Offer
-	@OneToMany(mappedBy="customer")
-	private List<Offer> offers;
+	//@OneToMany(mappedBy="customer",fetch=FetchType.LAZY )
+	//private List<Offer> offers;
 
 	//bi-directional many-to-one association to Offer
-	@OneToMany(mappedBy="customer")
-	private List<Termin> termins;
+	//@OneToMany(mappedBy="customer",fetch=FetchType.LAZY)
+	//private List<Termin> termins;
 	
 	public Customer() {
 	}
@@ -117,48 +119,48 @@ public class Customer implements Serializable {
 		this.tel = tel;
 	}
 
-	public List<Offer> getOffers() {
-		return this.offers;
-	}
-
-	public void setOffers(List<Offer> offers) {
-		this.offers = offers;
-	}
-
-	public Offer addOffers(Offer offers) {
-		getOffers().add(offers);
-		offers.setCustomer(this);
-
-		return offers;
-	}
-
-	public Offer removeOffers(Offer offers) {
-		getOffers().remove(offers);
-		offers.setCustomer(null);
-
-		return offers;
-	}
-
-	public List<Termin> getTermins() {
-		return this.termins;
-	}
-
-	public void setTermins(List<Termin> termins) {
-		this.termins = termins;
-	}
-
-	public Termin addTermins(Termin termins) {
-		getTermins().add(termins);
-		termins.setCustomer(this);
-
-		return termins;
-	}
-
-	public Termin removeTermins(Termin termins) {
-		getTermins().remove(termins);
-		termins.setCustomer(null);
-
-		return termins;
-	}
+//	public List<Offer> getOffers() {
+//		return this.offers;
+//	}
+//
+//	public void setOffers(List<Offer> offers) {
+//		this.offers = offers;
+//	}
+//
+//	public Offer addOffers(Offer offers) {
+//		getOffers().add(offers);
+//		offers.setCustomer(this);
+//
+//		return offers;
+//	}
+//
+//	public Offer removeOffers(Offer offers) {
+//		getOffers().remove(offers);
+//		offers.setCustomer(null);
+//
+//		return offers;
+//	}
+//
+//	public List<Termin> getTermins() {
+//		return this.termins;
+//	}
+//
+//	public void setTermins(List<Termin> termins) {
+//		this.termins = termins;
+//	}
+//
+//	public Termin addTermins(Termin termins) {
+//		getTermins().add(termins);
+//		termins.setCustomer(this);
+//
+//		return termins;
+//	}
+//
+//	public Termin removeTermins(Termin termins) {
+//		getTermins().remove(termins);
+//		termins.setCustomer(null);
+//
+//		return termins;
+//	}
 	
 }

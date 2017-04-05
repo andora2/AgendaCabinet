@@ -17,25 +17,25 @@ public class Offer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="\"amount\"")
+	@Id
+	@Column(name="idOffer")
+	private Long idOffer;
+
+	@Column(name="amount")
 	private Double amount;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="\"createDate\"")
+	@Column(name="createDate")
 	private Date createDate;
 
-	@Column(name="\"Customer_idCustomer\"")
-	private Long customer_idCustomer;
+	//@Column(name="Customer_idCustomer")
+	//private Long customer_idCustomer;
 
-	@Column(name="\"details\"")
+	@Column(name="details")
 	private String details;
 
-	@Id
-	@Column(name="\"idOffer\"")
-	private Long idOffer;
-
 	@ManyToOne
-    @JoinColumn(name="\"Customer_idCustomer\"")
+    @JoinColumn(name="Customer_idCustomer")
     private Customer customer;
 	
 	public Customer getCustomer() {
@@ -43,8 +43,8 @@ public class Offer implements Serializable {
 	}
 
 	public void setCustomer(Customer customer) {
-		//this.customer = customer;
-		this.setCustomer_idCustomer(customer.getIdCustomer());
+		this.customer = customer;
+		//this.setCustomer_idCustomer(customer.getIdCustomer());
 	}
 
 	public Offer() {
@@ -66,13 +66,13 @@ public class Offer implements Serializable {
 		this.createDate = createDate;
 	}
 
-	public Long getCustomer_idCustomer() {
+	/*public Long getCustomer_idCustomer() {
 		return this.customer_idCustomer;
 	}
 
 	public void setCustomer_idCustomer(Long customer_idCustomer) {
 		this.customer_idCustomer = customer_idCustomer;
-	}
+	}*/ 
 
 	public String getDetails() {
 		return this.details;

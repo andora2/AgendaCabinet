@@ -8,11 +8,5 @@
 		<class>model.User</class>
 		<class>model.WorkType</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
-		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/AgendaCabinet"/>
-			<property name="javax.persistence.jdbc.user" value="WASUSER"/>
-			<property name="javax.persistence.jdbc.password" value="wasuser"/>
-			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-		</properties>
 	</persistence-unit>
 </persistence>

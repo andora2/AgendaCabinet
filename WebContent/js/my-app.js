@@ -2,6 +2,16 @@
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 
+function getTermin(plannedTime){
+	var res = {};
+	$$.get('rest/termine/'+plannedTime, {}, function (data) {
+		res = data;
+	  console.log('Load Termine was performed');
+	})
+	
+	return res;	
+}
+
 function getCurrentTermine(){
 	var res = {};
 	$$.get('rest/termine', {}, function (data) {
@@ -32,7 +42,17 @@ var myApp = new Framework7({
     //Specify templates/pages data
     template7Data: {
     	// This context will applied for page/template with data-page="contacts"
-        'page:agenda': getCurrentTermine(),
+        'url:agenda.html': { 
+        	'termine': [
+        		{ 	plannedStart: '22 Dec',
+        			Customer_idCustomer: 'customerid',
+        			WorkType_idWorkType: 'worktypeid' },
+        		{ 	plannedStart: '23 Dec',
+        			Customer_idCustomer: 'customerid',
+        			WorkType_idWorkType: 'worktypeid' },
+        		]/*getCurrentTermine()*/, 
+        	},
+        
     }
 });
 

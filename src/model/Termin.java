@@ -17,45 +17,68 @@ public class Termin implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="\"cancelationType\"")
-	private String cancelationType;
-
-	@Column(name="\"Customer_idCustomer\"")
-	private Long customer_idCustomer;
-
-	@Column(name="\"finishTime\"")
-	private Timestamp finishTime;
-
-	@Column(name="\"Offer_idOffer\"")
-	private Long offer_idOffer;
-
-	@Column(name="\"payment\"")
-	private Double payment;
-
 	@Id
-	@Column(name="\"plannedTime\"")
+	@Column(name="plannedTime")
 	private Timestamp plannedTime;
 
-	@Column(name="\"realTime\"")
+	@Column(name="cancelationType")
+	private String cancelationType;
+
+	//@Column(name="Customer_idCustomer")
+	//private Long customer_idCustomer;
+
+	@Column(name="finishTime")
+	private Timestamp finishTime;
+
+//	@Column(name="Offer_idOffer")
+//	private Long offer_idOffer;
+
+	@Column(name="payment")
+	private Double payment;
+
+	@Column(name="realTime")
 	private Timestamp realTime;
 
-	@Column(name="\"WorkType_idWorkType\"")
-	private Long workType_idWorkType;
+//	@Column(name="WorkType_idWorkType")
+//	private Long workType_idWorkType;
 
 	@ManyToOne
-    @JoinColumn(name="\"Customer_idCustomer\"")
+    @JoinColumn(name="Customer_idCustomer")
     private Customer customer;
 	
+	@ManyToOne
+    @JoinColumn(name="WorkType_idWorkType")
+    private WorkType worktype;
+	
+	@ManyToOne
+    @JoinColumn(name="Offer_idOffer")
+    private Offer offer;
+
 	public Customer getCustomer() {
 		return customer;
 	}
 
 	public void setCustomer(Customer customer) {
-		//this.customer = customer;
-		this.setCustomer_idCustomer(customer.getIdCustomer());
+		this.customer = customer;
 	}
 
 	public Termin() {
+	}
+
+	public WorkType getWorkType() {
+		return worktype;
+	}
+
+	public void setWorkType(WorkType worktype) {
+		this.worktype = worktype;
+	}
+	
+	public Offer getOffer() {
+		return offer;
+	}
+
+	public void setOffer(Offer offer) {
+		this.offer = offer;
 	}
 
 	public String getCancelationType() {
@@ -66,13 +89,13 @@ public class Termin implements Serializable {
 		this.cancelationType = cancelationType;
 	}
 
-	public Long getCustomer_idCustomer() {
+	/*public Long getCustomer_idCustomer() {
 		return this.customer_idCustomer;
 	}
 
 	public void setCustomer_idCustomer(Long customer_idCustomer) {
 		this.customer_idCustomer = customer_idCustomer;
-	}
+	}*/
 
 	public Timestamp getFinishTime() {
 		return this.finishTime;
@@ -82,13 +105,13 @@ public class Termin implements Serializable {
 		this.finishTime = finishTime;
 	}
 
-	public Long getOffer_idOffer() {
-		return this.offer_idOffer;
-	}
-
-	public void setOffer_idOffer(Long offer_idOffer) {
-		this.offer_idOffer = offer_idOffer;
-	}
+//	public Long getOffer_idOffer() {
+//		return this.offer_idOffer;
+//	}
+//
+//	public void setOffer_idOffer(Long offer_idOffer) {
+//		this.offer_idOffer = offer_idOffer;
+//	}
 
 	public Double getPayment() {
 		return this.payment;
@@ -114,12 +137,12 @@ public class Termin implements Serializable {
 		this.realTime = realTime;
 	}
 
-	public Long getWorkType_idWorkType() {
-		return this.workType_idWorkType;
-	}
-
-	public void setWorkType_idWorkType(Long workType_idWorkType) {
-		this.workType_idWorkType = workType_idWorkType;
-	}
+//	public Long getWorkType_idWorkType() {
+//		return this.workType_idWorkType;
+//	}
+//
+//	public void setWorkType_idWorkType(Long workType_idWorkType) {
+//		this.workType_idWorkType = workType_idWorkType;
+//	}
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -23,7 +24,7 @@ import model.Termin;
 
 @Path( "/termine" )
 @Produces( MediaType.APPLICATION_JSON )
-@Consumes(MediaType.APPLICATION_JSON)
+@Consumes( MediaType.APPLICATION_JSON )
 @Stateless
 public class TermineWS {
 
@@ -32,6 +33,9 @@ public class TermineWS {
 	
 	@EJB
 	CustomerWS custommerWS;
+	
+	@Inject
+    private EntityManager entityManager;
 	
 	@GET
 	@Path( "/" )
@@ -45,8 +49,10 @@ public class TermineWS {
 		/*EntityManagerFactory emf = Persistence.createEntityManagerFactory( "AgendaCabinet" );
 		EntityManager em = emf.createEntityManager();
 		return em.createNamedQuery("Customer.findAll").getResultList();*/
-		this.dummyData.init();
-		return this.dummyData.getTermine();
+		List<Termin> res = entityManager.createNamedQuery("Termin.findAll").getResultList();
+		return res;
+		//this.dummyData.init();
+		//return this.dummyData.getTermine();
 	}
 
 	@GET
@@ -57,7 +63,7 @@ public class TermineWS {
 	}
 
 	private Customer getTermin(Timestamp i_id) {
-		this.dummyData.init();
+		//this.dummyData.init();
 		//this.dummyData.getTermine().stream().filter(arg0)
 		return null;
 	}	
