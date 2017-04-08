@@ -43,14 +43,16 @@ var myApp = new Framework7({
     template7Data: {
     	// This context will applied for page/template with data-page="contacts"
         'url:agenda.html': { 
-        	'termine': [
-        		{ 	plannedStart: '22 Dec',
-        			Customer_idCustomer: 'customerid',
-        			WorkType_idWorkType: 'worktypeid' },
-        		{ 	plannedStart: '23 Dec',
-        			Customer_idCustomer: 'customerid',
-        			WorkType_idWorkType: 'worktypeid' },
-        		]/*getCurrentTermine()*/, 
+        	'termine': getCurrentTermine(), 
+//        		[
+//	        		{ 	plannedStart: '22 Dec',
+//	        			Customer_idCustomer: 'customerid',
+//	        			WorkType_idWorkType: 'worktypeid' },
+//	        		{ 	plannedStart: '23 Dec',
+//	        			Customer_idCustomer: 'customerid',
+//	        			WorkType_idWorkType: 'worktypeid' },
+//        		],
+				
         	},
         
     }

@@ -1,4 +1,4 @@
-CREATE SCHEMA PROD;
+CREATE SCHEMA AGCAB_PROD;
 
 --!DROP TABLE 'AGCAB_PROD.User';
 CREATE TABLE AGCAB_PROD.User (
@@ -19,7 +19,7 @@ CREATE TABLE AGCAB_PROD.Customer (
   createTime TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE UNIQUE INDEX UNIQUE_CUSTOMER_NAME ON AGCAB_PROD.Customer  (name ASC, familyName ASC);
+CREATE UNIQUE INDEX AGCAB_PROD.UNIQUE_CUSTOMER_NAME ON AGCAB_PROD.Customer  (name ASC, familyName ASC);
 
 --!Drop table AGCAB_PROD.Offer;
 CREATE TABLE AGCAB_PROD.Offer (
@@ -35,7 +35,7 @@ CREATE TABLE AGCAB_PROD.Offer (
     ON UPDATE NO ACTION
 );
 
-CREATE INDEX fk_Offer_Customer_idx ON AGCAB_PROD.Offer (Customer_idCustomer ASC);
+CREATE INDEX AGCAB_PROD.fk_Offer_Customer_idx ON AGCAB_PROD.Offer (Customer_idCustomer ASC);
 
 
 CREATE TABLE AGCAB_PROD.WorkType (
@@ -70,7 +70,7 @@ CREATE TABLE AGCAB_PROD.Termin (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE INDEX fk_Termin_Customer_idx ON AGCAB_PROD.Termin (Customer_idCustomer ASC);
-CREATE INDEX fk_Termin_Offer1_idx ON AGCAB_PROD.Termin (Offer_idOffer ASC);
-CREATE INDEX fk_Termin_WorkType1_idx ON AGCAB_PROD.Termin (WorkType_idWorkType ASC);
+CREATE INDEX AGCAB_PROD.fk_Termin_Customer_idx ON AGCAB_PROD.Termin (Customer_idCustomer ASC);
+CREATE INDEX AGCAB_PROD.fk_Termin_Offer1_idx ON AGCAB_PROD.Termin (Offer_idOffer ASC);
+CREATE INDEX AGCAB_PROD.fk_Termin_WorkType1_idx ON AGCAB_PROD.Termin (WorkType_idWorkType ASC);
     
