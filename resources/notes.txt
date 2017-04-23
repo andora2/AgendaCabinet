@@ -6,3 +6,5 @@ Zentrale&27
 
 AGCAB_DEVELOPER
 GoGoGadgeto7
+
+https://hackernoon.com/thinking-in-redux-when-all-youve-known-is-mvc-c78a74d35133
