@@ -1,4 +1,14 @@
-export const LOAD_TERMINE = "LOAD_TERMINE";
+let nextTerminId = 0
+export const ADD_TERMIN = "ADD_TERMIN";
+export const addTermin = (termin) => {
+	return {
+		type: ADD_TERMIN,
+		id: nextTerminId++,
+		termin
+	};
+};
+
+/*export const LOAD_TERMINE = "LOAD_TERMINE";
 export function loadTermine(){
 	return {
 		type: LOAD_TERMINE
@@ -85,3 +95,4 @@ export function modifyTerminCancelationType( cancelationType ){
 		}
 	};
 };
+*/

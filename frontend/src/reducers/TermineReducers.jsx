@@ -1,6 +1,32 @@
-import * as constants from "../actions/TermineActions";
+import {ADD_TERMIN} from "../actions/TermineActions";
 
-const initialState = {
+const termin = (state = {}, action ) => {
+	switch(action.type){
+		case ADD_TERMIN:
+			return {
+				id: action.id,
+				termin: action.termin
+			}
+		default:
+			return state
+	}
+}
+
+const termine = (state = [], action) => {
+	switch (action.type){
+		case ADD_TERMIN:
+			return [
+			  ...state,
+			  termin(undefined,action)
+	        ]
+		default:
+			return state
+	}
+}
+
+export default termine;
+
+/*const initialState = {
 		plannedTime: '',
 		realTime: '',
 		finishTime: '',
@@ -37,4 +63,4 @@ function termin(state=initialState, action){
 	};
 };
 
-export default termin;
+export default termin;*/

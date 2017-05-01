@@ -1,22 +1,15 @@
-import 'framework7/dist/css/framework7.ios.min.css';
-import 'framework7/dist/css/framework7.ios.colors.min.css';
-
-/* OR for Material Theme:
-import 'framework7/dist/css/framework7.material.min.css'
-import 'framework7/dist/css/framework7.material.colors.min.css'
-*/
-
-import './css/app.css';
-
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {App} from './components/App';
+import React from 'react'
+import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import {store} from './store';
+import { createStore } from 'redux'
+import todoApp from './reducers/TodoReducers'
+import App from './components/App'
 
-ReactDOM.render(
+let store = createStore(todoApp)
+
+render(
   <Provider store={store}>
-  	<App />
+    <App />
   </Provider>,
   document.getElementById('root')
-);
+)

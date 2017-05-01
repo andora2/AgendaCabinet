@@ -28,12 +28,12 @@ public class DummyData {
 		newCustomer.setName("Jon");
 		newCustomer.setTel("");
 		Termin termin = termine.get(0);
-		newCustomer.setTermins(new ArrayList<Termin>());
-		newCustomer.addTermins(termin);
+		//TODO newCustomer.setTermins(new ArrayList<Termin>());
+		//TODO newCustomer.addTermins(termin);
 		Offer offer = offers.get(0);
-		newCustomer.setOffers(new ArrayList<Offer>());
-		newCustomer.addOffers(offer);
-		termin.setOffer_idOffer(offer.getIdOffer());
+		//TODO newCustomer.setOffers(new ArrayList<Offer>());
+		//TODO newCustomer.addOffers(offer);
+		//TODO termin.setOffer_idOffer(offer.getIdOffer());
 		
 		this.customers = new ArrayList<Customer>();
 		this.customers.add(newCustomer);
@@ -49,12 +49,12 @@ public class DummyData {
 		newCustomer.setTel("0457687980");
 
 		termin = termine.get(1);
-		newCustomer.setTermins(new ArrayList<Termin>());
-		newCustomer.addTermins(termin);
-		newCustomer.setOffers(new ArrayList<Offer>());
+		//TODO newCustomer.setTermins(new ArrayList<Termin>());
+		//TODO newCustomer.addTermins(termin);
+		//TODO newCustomer.setOffers(new ArrayList<Offer>());
 		offer = offers.get(1);
-		newCustomer.addOffers(offer);
-		termin.setOffer_idOffer(offer.getIdOffer());
+		//TODO newCustomer.addOffers(offer);
+		//TODO termin.setOffer_idOffer(offer.getIdOffer());
 
 		this.customers.add(newCustomer);
 	}
@@ -127,38 +127,38 @@ public class DummyData {
 		
 		Termin newTermine = new Termin();
 		newTermine.setPlannedTime(Timestamp.from(Instant.now().plusSeconds(5000)));
-		newTermine.setWorkType_idWorkType(worktypes.get(1).getIdWorkType());
+		//TODO newTermine.setWorkType_idWorkType(worktypes.get(1).getIdWorkType());
 		this.termine = new ArrayList<Termin>();
 		this.termine.add(newTermine);
 		
 		newTermine = new Termin();
 		newTermine.setPlannedTime(Timestamp.from(Instant.now().plusSeconds(3700)));
-		newTermine.setWorkType_idWorkType(worktypes.get(0).getIdWorkType());
+		//TODO newTermine.setWorkType_idWorkType(worktypes.get(0).getIdWorkType());
 		this.termine.add(newTermine);
 
 		newTermine = new Termin();
 		newTermine.setPlannedTime(Timestamp.from(Instant.now().plusSeconds(1500)));
-		newTermine.setWorkType_idWorkType(worktypes.get(0).getIdWorkType());
+		//TODO newTermine.setWorkType_idWorkType(worktypes.get(0).getIdWorkType());
 		this.termine.add(newTermine);
 		
 		newTermine = new Termin();
 		newTermine.setPlannedTime(Timestamp.from(Instant.now().plusSeconds(800)));
-		newTermine.setWorkType_idWorkType(worktypes.get(1).getIdWorkType());
+		//TODO newTermine.setWorkType_idWorkType(worktypes.get(1).getIdWorkType());
 		this.termine.add(newTermine);
 
 		newTermine = new Termin();
 		newTermine.setPlannedTime(Timestamp.from(Instant.now()));
-		newTermine.setWorkType_idWorkType(worktypes.get(1).getIdWorkType());
+		//TODO newTermine.setWorkType_idWorkType(worktypes.get(1).getIdWorkType());
 		this.termine.add(newTermine);
 
 		newTermine = new Termin();
 		newTermine.setPlannedTime(Timestamp.from(Instant.now().minusSeconds(700)));
-		newTermine.setWorkType_idWorkType(worktypes.get(0).getIdWorkType());
+		//TODO newTermine.setWorkType_idWorkType(worktypes.get(0).getIdWorkType());
 		this.termine.add(newTermine);
 
 		newTermine = new Termin();
 		newTermine.setPlannedTime(Timestamp.from(Instant.now().minusSeconds(2300)));
-		newTermine.setWorkType_idWorkType(worktypes.get(1).getIdWorkType());
+		//TODO newTermine.setWorkType_idWorkType(worktypes.get(1).getIdWorkType());
 		this.termine.add(newTermine);
 	}
 
