@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react'
+import {TimelineItem} from 'framework7-react';	
 
 const Termin = ({ onClick, termin }) => (
-    <li onClick={onClick}>
-        { termin }
-    </li>
+    <TimelineItem onClick={onClick} day="21" month="DEC" inner content={termin}/>
 )
 
 Termin.propoTypes = {

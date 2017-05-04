@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react'
 import Termin from './Termin'
+import {Timeline} from 'framework7-react';	
 
 const TermineList = ({ termine, onTerminClick }) => (
-    <ul>
+    <Timeline>
         {termine.map(termin =>
             <Termin
                 key={termin.id}
@@ -10,7 +11,7 @@ const TermineList = ({ termine, onTerminClick }) => (
                 onClick={() => onTerminClick(termin.id)}
             />
         )}
-    </ul>
+    </Timeline>
 )
 
 TermineList.propTypes = {

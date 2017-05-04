@@ -17,6 +17,7 @@ let AddTodo = ({ dispatch }) => {
       }}>
         <input ref={node => {
           input = node
+          console.log(node)
         }} />
         <button type="submit">
           Add Todo
