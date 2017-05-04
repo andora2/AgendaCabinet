@@ -8,20 +8,24 @@ const pStyle = {margin: '1em 0'};
 let AddTermin = ({ dispatch }) => {
     let input
     
+    let onTerminChange = ({event}) => {
+        input = event.target.value
+    }    
+
     return (
         <List form>
         	<ListItem>
         		<FormLabel>"Termin text"</FormLabel>
-                <FormInput type="text" placeholder="Termin Text" ref={node => {
-                    input = node
-                }}/>
-                <Fab style={pStyle} onClick={e => {
-	                    e.preventDefault()
-	                    console.log(e);
-	                    console.log( input );
-	                    dispatch(addTermin(input))
-                    }}>
-                	Add Termin
+                <FormInput type="text" 
+                           placeholder="Termin Text"
+                           onChange={ e => {
+                                console.log(e);
+                                input = e.target.value
+                               }}
+                           value={input}
+                />
+                <Fab click={dispatch(addTermin(input))}>
+                    Add
                 </Fab>
             </ListItem>
         </List>
