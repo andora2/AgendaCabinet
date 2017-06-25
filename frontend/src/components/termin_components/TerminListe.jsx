@@ -5,7 +5,7 @@ import {Page, Navbar, ContentBlockTitle, List, ListItem,
         Timeline, TimelineItem, TimelineYear, TimelineMonth, TimelineItemChild,Fab,Icon} from 'framework7-react';
 
 import {Termin} from './Termin';
-import {displayTerminePerYear} from './TerminPerYearForTimeLine';
+import {displayTerminePerDay} from './TerminPerDay1ForTimeLine';
 
 const onActionClick = (terminDay: object) => {
     console.log('Dial action clicked!' + terminDay)
@@ -24,12 +24,11 @@ export class TerminListe extends Component {
     render() {
         return (
             <div>
-                <ContentBlockTitle>Termine</ContentBlockTitle>
                 <Timeline>
-                  {this.props.termine.map((termineYear, yearIdx) =>
-                        <TimelineYear title={termineYear.year}>
-                            { displayTerminePerYear(termineYear.months) } 
-                        </TimelineYear>
+                  {this.props.termine.map((terminePerDate, terminDateIdx) =>
+                        <TimelineItem title={terminePerDate.day}>
+                            { displayTerminePerDay(terminePerDate.termine) } 
+                        </TimelineItem>
                   )}
                 </Timeline>
             </div>
