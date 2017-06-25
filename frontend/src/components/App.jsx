@@ -6,14 +6,8 @@ import {
 	LoginScreen, LoginScreenTitle, ListButton, ListLabel, FormLabel, FormInput
 } from 'framework7-react';
 
+import {TerminListe} from './TerminListe';
 import {routes} from '../routes';
-import {framework7StateKernel} from '../store';
-
-import Footer from './Footer'
-import AddTodo from '../containers/AddTodo'
-import VisibleTodoList from '../containers/VisibleTodoList'
-import AddTermin from '../containers/AddTermin'
-import VisibleTermineList from '../containers/VisibleTermineList'
 
 const LeftPanel = (props, context) => (
 	<Panel left reveal layout="dark">
@@ -75,6 +69,437 @@ RightPanel.contextTypes = {
 	framework7AppContext: PropTypes.object
 };
 
+var STRUCTURED_TERMINE = [
+  {"year":2017,
+   "months":[
+       {"month":"MAI",
+	    "days":[
+	       {"day":2,
+		    "termine":[
+		       {"id":23325,
+         		 "time":"17:30",
+         		 "pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		 "treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23326,
+         		"time":"18:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23327,
+         		"time":"20:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   },
+         	   {"id":23327,
+            		"time":"20:10",
+            		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+            		"treatment":"Punte fata"
+         	   },
+         	   {"id":23327,
+         		"time":"20:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   },
+         	   {"id":23327,
+         		"time":"20:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":3,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":4,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":5,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":7,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":8,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":9,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":10,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":11,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":14,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":15,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":16,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":17,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       },
+		   {"day":18,
+		    "termine":[
+		       {"id":23345,
+         		"time":"08:30",
+         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+          		"treatment":"extractie premolar 1 si 2"
+         	   },
+         	   {"id":23346,
+         		"time":"07:30",
+         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+         		"treatment":"Caries massea"
+         	   },
+         	   {"id":23347,
+         		"time":"12:10",
+         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+         		"treatment":"Punte fata"
+         	   }]
+	       }]
+       },
+       {"month":"APRILIE",
+   	    "days":[
+   	       {"day":12,
+   		    "termine":[
+   		       {"id":23325,
+            		 "time":"17:30",
+            		 "pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+             		 "treatment":"extractie premolar 1 si 2"
+            	   },
+            	   {"id":23326,
+            		"time":"18:30",
+            		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+            		"treatment":"Caries massea"
+            	   },
+            	   {"id":23327,
+            		"time":"20:10",
+            		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+            		"treatment":"Punte fata"
+            	   }]
+   	       },
+   		   {"day":13,
+   		    "termine":[
+   		       {"id":23345,
+            		"time":"08:30",
+            		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+             		"treatment":"extractie premolar 1 si 2"
+            	   },
+            	   {"id":23346,
+            		"time":"07:30",
+            		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+            		"treatment":"Caries massea"
+            	   },
+            	   {"id":23347,
+            		"time":"12:10",
+            		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+            		"treatment":"Punte fata"
+            	   }]
+   	       }]
+       }]
+  	},
+    {"year":2018,
+  	   "months":[
+  	       {"month":"FEBRUARIE",
+  		    "days":[
+  		       {"day":10,
+  			    "termine":[
+  			       {"id":23325,
+  	         		 "time":"17:30",
+  	         		 "pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+  	          		 "treatment":"extractie premolar 1 si 2"
+  	         	   },
+  	         	   {"id":23326,
+  	         		"time":"18:30",
+  	         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+  	         		"treatment":"Caries massea"
+  	         	   },
+  	         	   {"id":23327,
+  	         		"time":"20:10",
+  	         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+  	         		"treatment":"Punte fata"
+  	         	   }]
+  		       },
+  			   {"day":12,
+  			    "termine":[
+  			       {"id":23345,
+  	         		"time":"08:30",
+  	         		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+  	          		"treatment":"extractie premolar 1 si 2"
+  	         	   },
+  	         	   {"id":23346,
+  	         		"time":"07:30",
+  	         		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+  	         		"treatment":"Caries massea"
+  	         	   },
+  	         	   {"id":23347,
+  	         		"time":"12:10",
+  	         		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+  	         		"treatment":"Punte fata"
+  	         	   }]
+  		       }]
+  	       },
+  	       {"month":"MARTIE",
+  	   	    "days":[
+  	   	       {"day":1,
+  	   		    "termine":[
+  	   		       {"id":23325,
+  	            		 "time":"17:30",
+  	            		 "pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+  	             		 "treatment":"extractie premolar 1 si 2"
+  	            	   },
+  	            	   {"id":23326,
+  	            		"time":"18:30",
+  	            		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+  	            		"treatment":"Caries massea"
+  	            	   },
+  	            	   {"id":23327,
+  	            		"time":"20:10",
+  	            		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+  	            		"treatment":"Punte fata"
+  	            	   }]
+  	   	       },
+  	   		   {"day":2,
+  	   		    "termine":[
+  	   		       {"id":23345,
+  	            		"time":"08:30",
+  	            		"pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+  	             		"treatment":"extractie premolar 1 si 2"
+  	            	   },
+  	            	   {"id":23346,
+  	            		"time":"07:30",
+  	            		"pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+  	            		"treatment":"Caries massea"
+  	            	   },
+  	            	   {"id":23347,
+  	            		"time":"12:10",
+  	            		"pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+  	            		"treatment":"Punte fata"
+  	            	   }]
+  	   	       }]
+  	       }]
+  	  	}
+  ];
+
+var TERMINE =  [
+        {"id":1,
+		 "date":"2017-11-10",
+		 "month":"NOV",
+	 	 "day":"10",		 
+		 "time":"17:30",
+		 "pacient":{"id":12,"gender":"F","person_name":{"prefix":"Doamna", "name":"Aurelia", "family_name":"Moraru"}},
+ 		 "treatment":"extractie premolar 1 si 2"
+		},
+		{"id":2,
+		 "date":"2017-11-10",
+		 "month":"NOV",
+		 "day":"10",		 
+		 "time":"18:30",
+		 "pacient":{"id":7,"gender":"M","person_name":{"prefix":"", "name":"Stefan", "family_name":"Postilion"}},
+		 "treatment":"Caries massea"
+		},
+		{"id":3,
+		 "date":"2017-11-10",
+		 "month":"NOV",
+		 "day":"10",		 
+		 "time":"20:10",
+		 "pacient":{"id":9,"gender":"F","person_name":{"prefix":"", "name":"Andrea", "family_name":"Salasar"}},
+		 "treatment":"Punte fata"
+		},
+		{"id":4,
+		 "date":"2017-11-13",
+		 "month":"NOV",
+		 "day":"13",		 
+		 "time":"20:10",
+		 "pacient":{"id":78,"gender":"F","person_name":{"prefix":"", "name":"Croita", "family_name":"Moarta"}},
+		 "treatment":"Puroi Masea, ku mul mai mult Text deexplicatie cea fost si ar mai putea sa fie"
+		}
+   ];
+   
 const MainViews = (props, context) => {
 	return (
 		<Views>
@@ -104,18 +529,13 @@ const MainViews = (props, context) => {
 									<Link icon="icon-bars" openPanel="right"></Link>
 								</NavRight>
 							</Navbar>
-						) : null}						
+						) : null}
+                        
+                        <TerminListe termine={STRUCTURED_TERMINE}></TerminListe>
+                    
 						<ContentBlockTitle>Welcome to my App</ContentBlockTitle>
 						<ContentBlock inner>
 							<p>Duis sed erat ac eros ultrices pharetra id ut tellus. Praesent rhoncus enim ornare ipsum aliquet ultricies. Pellentesque sodales erat quis elementum sagittis.</p>
-                          <div>
-                            <AddTodo />
-                            <VisibleTodoList />
-                            <Footer />
-                            <AddTermin />
-                            <VisibleTermineList />
-                          </div>
-                            
 						</ContentBlock>
 						<ContentBlockTitle>Navigation</ContentBlockTitle>
 						<List>
@@ -200,16 +620,14 @@ const AppLoginScreen = () => (
 	</LoginScreen>
 );
 
-export const App = () => { 
-	return (	
+export const App = () => (	
 	//Change themeType to "material" to use the Material theme
-		<Framework7App themeType="ios" routes={routes} stateKernel={framework7StateKernel} >		
-			<Statusbar />		
-			<LeftPanel />
-			<RightPanel />
-			<MainViews />
-			<AppPopup />
-			<AppLoginScreen />			
-		</Framework7App>
-	);
-};
+	<Framework7App themeType="ios" routes={routes}>		
+		<Statusbar />		
+		<LeftPanel />
+		<RightPanel />
+		<MainViews />
+		<AppPopup />
+		<AppLoginScreen />
+	</Framework7App>  
+);

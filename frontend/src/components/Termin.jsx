@@ -1,13 +1,23 @@
-import React, { PropTypes } from 'react'
-import {TimelineItem} from 'framework7-react';	
+import React, {Component} from 'react';
+import {Page, Navbar, ContentBlockTitle, List, ListItem, 
+        FormLabel, FormInput, Button, GridCol, GridRow, 
+        ContentBlock, ButtonsSegmented, View} from 'framework7-react';
 
-const Termin = ({ onClick, termin }) => (
-    <TimelineItem onClick={onClick} day="21" month="DEC" inner content={termin}/>
-)
+export class Termin extends Component {
+      constructor(props, context) {
+        super(props, context);
 
-Termin.propoTypes = {
-        onClick: PropTypes.func.isRequired,
-        termin: PropTypes.string.isRequired
-}
+        this.state = {
+            otherData: '2014-04-30',
+            otherData1: 1
+        };        
+    }
 
-export default Termin 
+    render() {
+        return (
+            <List inset>
+                <ListItem title={this.props.data.text} />
+            </List>
+        );
+    }
+};
