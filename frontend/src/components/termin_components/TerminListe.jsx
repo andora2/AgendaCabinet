@@ -27,6 +27,7 @@ export class TerminListe extends Component {
                 <Timeline>
                   {this.props.termine.map((terminePerDate, terminDateIdx) =>
                         <TimelineItem title={terminePerDate.day}>
+                            Hallo {this.props.list_idx} {this.props.value}
                             { displayTerminePerDay(terminePerDate.termine) } 
                         </TimelineItem>
                   )}

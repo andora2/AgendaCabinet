@@ -8,6 +8,21 @@ import {
 
 import {routes} from '../routes';
 
+let framework7: any;
+let currentRoute: any;
+
+export const getFramework7 = () => {
+    return framework7;
+}
+
+const onRouteChange = (route: any) => {
+    currentRoute = route;
+}
+
+export const getCurrentRoute = () => {
+    return currentRoute;
+}
+
 const LeftPanel = (props, context) => (
 	<Panel left reveal layout="dark">
 		<View id="left-panel-view" navbarThrough dynamicNavbar="true">
@@ -136,7 +151,7 @@ const AppLoginScreen = () => (
 
 export const App = () => (	
 	//Change themeType to "material" to use the Material theme
-	<Framework7App themeType="ios" routes={routes}>		
+	<Framework7App onFramework7Init={(f7) => {framework7 = f7}} themeType="ios" routes={routes} onRouteChange={onRouteChange}>		
 		<Statusbar />		
 		<LeftPanel />
 		<MainViews />

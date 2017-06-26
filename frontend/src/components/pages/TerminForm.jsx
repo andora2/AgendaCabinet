@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import {Page, Navbar, ContentBlockTitle, List, ListItem, FormLabel, FormInput, Button, GridCol, GridRow, ContentBlock, ButtonsSegmented} from 'framework7-react';
 
 const onChangeHandler = (event) => {
@@ -7,11 +7,13 @@ const onChangeHandler = (event) => {
 
 const pStyle = {margin: '1em 0'};
 
-export class TerminForm extends Component {
+export class TerminForm extends React.Component<any, any> {
+    
     constructor(props, context) {
         super(props, context);
-
+        
         this.state = {
+            name: `${props.value}`,
             birthDate: '2014-04-30',
             radioSelected: 1
         };        
@@ -24,20 +26,26 @@ export class TerminForm extends Component {
         });
     }    
 
+    onNameChange(event) {
+         this.setState({
+              ...this.state,
+              name: event.target.value
+          });
+    }
     render() {
         return (
             <Page>
-                <Navbar backLink="Back" title="Termin ${this.state.birthDate}" sliding />
+                <Navbar backLink="Back" backLinkUrl={`#/${this.props.list_idx}/${this.state.name}`} title={`Termin pentru '${this.state.name}'`} sliding />
 
                 <ContentBlockTitle>Pacient</ContentBlockTitle>
                 <List form>
                     <ListItem>
                         <FormLabel>Nume</FormLabel>  
-                        <FormInput type="text" placeholder="nume" />   
+                        <FormInput type="text" placeholder="nume" value={this.state.name} onChange={this.onNameChange.bind(this)}/>   
                     </ListItem>
                     <ListItem>
                         <FormLabel>Prenume</FormLabel>  
-                        <FormInput type="text" placeholder="prenume" />   
+                        <FormInput type="text" placeholder="prenume"  defaultValue={this.props.pos_id}/>   
                     </ListItem>                
                     <ListItem>
                         <FormLabel>Telefon</FormLabel>  
@@ -45,7 +53,7 @@ export class TerminForm extends Component {
                     </ListItem>                
                     <ListItem>
                         <FormLabel>Birth date</FormLabel>  
-                        <FormInput type="date" placeholder="Birth date" value={this.state.birthDate} />   
+                        <FormInput type="date" placeholder="Birth date" defaultValue={this.state.birthDate} />   
                     </ListItem>
                     <ListItem>
                         <FormLabel>Planificat la ora</FormLabel>  

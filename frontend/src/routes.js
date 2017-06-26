@@ -19,4 +19,10 @@ export const routes = [{
 }, {
     path: '/termin_form/',
     component: TerminForm
+}, {
+    path: '/edit_termin/:list_idx/:value',
+    component: TerminForm    
+}, {
+    path: '/termine/:list_idx/:value',
+    component: Termine
 }];
